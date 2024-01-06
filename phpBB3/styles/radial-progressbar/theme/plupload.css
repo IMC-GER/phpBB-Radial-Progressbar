@@ -74,7 +74,7 @@
 }
 
 .file-status.file-working {
-	background: url('./images/plupload/throbber_grey.svg');
+	background: url('./images/plupload/throbber.svg');
 	background-size: cover;
 }
 
