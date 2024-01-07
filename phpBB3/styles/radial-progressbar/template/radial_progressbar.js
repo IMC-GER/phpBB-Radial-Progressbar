@@ -1,5 +1,9 @@
 /**
- *	Radial Progressbar
+ * Radial Progressbar
+ * An style add-on for the phpBB Forum Software package.
+ *
+ * @copyright (c) 2024, Thorsten Ahlers
+ * @license GNU General Public License, version 2 (GPL-2.0)
  */
 
  /**
@@ -13,18 +17,14 @@ if (typeof imcger != 'object') {
 
 	'use strict';
 
-	/**
-	 * @var	imcger	object for Radial Progressbar.
-	 */
 	imcger.radialProgBar = {};
-
 	imcger.radialProgBar.throbberFilter = false;
 
 	/**
 	 * Returns the brightness of the colour
 	 *
-	 * @param	string	rgbColour	Colour in format rgb(r, g, b)
-	 * @returns	int					Brightness of colour
+	 * @param	{string}	rgbColour	Colour in format rgb(r, g, b)
+	 * @returns	{int}					Brightness of colour
 	 */
 	imcger.radialProgBar.getBrightness = function(rgbColour) {
 		let colours = [];
@@ -37,13 +37,14 @@ if (typeof imcger != 'object') {
 		colours[1] = parseInt(colours[1]);
 		colours[2] = parseInt(colours[2]);
 
-		return Math.round(Math.sqrt(0.299 * Math.pow(colours[0],2) + 0.587 * Math.pow(colours[1],2) + 0.114 * Math.pow(colours[2],2)));
+		// Format Rec. 601
+		return Math.round(Math.sqrt(0.299 * Math.pow(colours[0], 2) + 0.587 * Math.pow(colours[1], 2) + 0.114 * Math.pow(colours[2], 2)));
 	};
 
 	$(document).ready(function() {
 		phpbb.plupload.uploader.bind('FilesAdded', function(up, files) {
 			let backgroundColour = $('#file-list td').css('background-color');
-			
+
 			$('.radial-progress-cover').css('stroke', backgroundColour);
 
 			// Set the colour for the file progress spinner, depending on the background
