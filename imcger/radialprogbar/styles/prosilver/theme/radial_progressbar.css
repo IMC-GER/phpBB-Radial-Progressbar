@@ -1,0 +1,44 @@
+/*	Radial Progressbar
+---------------------------------------------- */
+
+.file-progress {
+	background-color: unset;
+	height: unset;
+	width: unset;
+}
+
+.file-status {
+	height: 24px;
+	width: 24px;
+	vertical-align: middle;
+}
+
+.file-status.file-working {
+	background: url('./images/plupload/throbber.svg');
+	background-size: cover;
+}
+
+.file-status.file-uploaded {
+	background: url('./images/plupload/done.svg');
+	background-size: cover;
+}
+
+.file-status.file-error {
+	background: url('./images/plupload/error.svg');
+	background-size: cover;
+}
+
+.svg.radial-progress {
+	position: absolute;
+}
+
+svg {
+	transform: rotate(270deg);
+}
+
+circle {
+	border: 12px solid transparent;
+	stroke-width: 12px;
+	fill: transparent;
+	transform: rotate(0.1deg); // to fix Firefox
+}
