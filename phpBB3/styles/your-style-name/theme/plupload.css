@@ -53,10 +53,7 @@
 }
 
 .file-progress {
-	/* background-color: #CCCCCC; */
-	/* display:inline-block; */
-	/* height: 8px; */
-	/* width: 50px; */
+	display:inline-block;
 }
 
 .file-progress-bar, .file-total-progress-bar {
@@ -95,7 +92,10 @@
 
 .svg.radial-progress {
 	position: absolute;
-	display: inline-block;
+}
+
+.svg.radial-progress {
+	position: absolute;
 }
 
 svg {
@@ -103,30 +103,8 @@ svg {
 }
 
 circle {
-	stroke-width: 10px;
+	border: 12px solid transparent;
+	stroke-width: 12px;
 	fill: transparent;
 	transform: rotate(0.1deg); // to fix Firefox
-}
-
-.radial-progress-background {
-	stroke: #27c627;
-	stroke-width: 12px;
-	border: 13px solid transparent;
-}
-
-.radial-progress-cover {
-	stroke: #646464;
-	stroke-width: 12px;
-	border: 13px solid transparent;
-}
-
-.radial-progress-center {
-	fill: transparent;
-}
-
-.radial-fill {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
 }

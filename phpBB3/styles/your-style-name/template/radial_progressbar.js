@@ -37,21 +37,19 @@ if (typeof imcger != 'object') {
 		colours[1] = parseInt(colours[1]);
 		colours[2] = parseInt(colours[2]);
 
-		// Format Rec. 601
+		// Format Rec. 601 (http://alienryderflex.com/hsp.html)
 		return Math.round(Math.sqrt(0.299 * Math.pow(colours[0], 2) + 0.587 * Math.pow(colours[1], 2) + 0.114 * Math.pow(colours[2], 2)));
 	};
 
+	// Set the colour for the file progress spinner, depending on the background
+	if (imcger.radialProgBar.getBrightness($('#file-list td').css('background-color')) < 128 && !imcger.radialProgBar.throbberFilter) {
+		$("head").append('<style>.file-status.file-working{filter:Invert();}</style>');
+		imcger.radialProgBar.throbberFilter = true;
+	}
+
 	$(document).ready(function() {
 		phpbb.plupload.uploader.bind('FilesAdded', function(up, files) {
-			let backgroundColour = $('#file-list td').css('background-color');
-
-			$('.radial-progress-cover').css('stroke', backgroundColour);
-
-			// Set the colour for the file progress spinner, depending on the background
-			if (imcger.radialProgBar.getBrightness(backgroundColour) < 128 && !imcger.radialProgBar.throbberFilter) {
-				$("head").append('<style>.file-status.file-working{filter:Invert();}</style>');
-				imcger.radialProgBar.throbberFilter = true;
-			}
+			$('.radial-progress-cover').css('stroke', $('#file-list td').css('background-color'));
 
 			up.bind('UploadProgress', function(up, file) {
 				$('.radial-progress-cover', '#' + file.id).attr('stroke-dashoffset', -(37.699 / 100) * file.percent);

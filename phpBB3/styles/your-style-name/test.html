@@ -1,0 +1,63 @@
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<table>
+  <tr>
+    <th>601</th>
+    <th>601^2</th>
+    <th>709</th>
+    <th>240</th>
+  </tr>
+  <tr id="output"></tr>
+</table>
+
+<script>
+  /**
+   * https://en.wikipedia.org/wiki/Luma_%28video%29
+   * @param {"601"|"709"|"240"|"145"} format
+   */
+  function getLuma(r, g, b, format) {
+    switch (format) {
+      case "601":
+        return 0.2999 * r + 0.587 * g + 0.114 * b
+      case "601^2":
+		return Math.round(Math.sqrt(0.299 * Math.pow(r,2) + 0.587 * Math.pow(g,2) + 0.114 * Math.pow(b,2)));
+      case "709":
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b
+      case "145":
+      case "240":
+        return 0.212 * r + 0.701 * g + 0.087 * b
+    }
+  }
+
+  const bgColorList = [...Array(100).keys()].map(t => d3.scaleSequential(d3.interpolateTurbo)(t / 100))
+    .concat(["black", "purple", "#cc1515", "green", "blue", "red", "white", "yellow"])
+  window.onload = () => {
+    const tdArr = []
+    d3.select("#output")
+      .selectAll("td")
+      .data(["601", "601^2", "709", "240"])
+      .enter().append("td")
+      .text((fmt, _idx, _arr) => {
+        const td = _arr[_idx]
+        tdArr.push([td, fmt])
+      })
+
+    tdArr.forEach(([td, fmt]) => {
+      d3.select(td).append("section")
+        .selectAll("div")
+        .data(bgColorList)
+        .enter().append("div")
+        .text((bgColor, idx, arr) => {
+          const div = arr[idx]
+          const {r, g, b} = d3.color(bgColor)
+          const foreColor = getLuma(r, g, b, fmt) > 165 ? "#000" : "#fff"
+          // const coefficient = [0.2126, 0.7152, 0.0722]
+          // const foreColor = [r, g, b].reduce((sum, color, i) => sum + color * coefficient[i], 0) > 165 ? "#000" : "#fff"
+          div.outerHTML = `<div style="width:100px;height:26px;
+background-color: ${bgColor};
+color:${foreColor}
+">Hello</div>`
+        })
+    })
+  }
+</script>
