@@ -40,5 +40,5 @@ circle {
 	border: 12px solid transparent;
 	stroke-width: 12px;
 	fill: transparent;
-	transform: rotate(0.1deg); // to fix Firefox
+	transform: rotate(0.1deg); /* to fix Firefox */
 }
