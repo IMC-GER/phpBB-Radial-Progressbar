@@ -4,7 +4,7 @@
     "description": "",
     "homepage": "",
     "version": "1.0.0",
-    "time": "2024-01-12",
+    "time": "2024-01-13",
     "keywords": ["phpbb", "extension", "radialprogbar"],
     "license": "GPL-2.0-only",
     "authors": [
@@ -23,6 +23,12 @@
         "display-name": "Radial Progressbar",
         "soft-require": {
             "phpbb/phpbb": "^3.3.0"
+        },
+        "version-check": {
+            "host": "raw.githubusercontent.com",
+            "directory": "/IMC-GER/phpBB-Radial-Progressbar/master",
+            "filename": "radialprogbar_version.json",
+            "ssl": true
         }
     }
 }

@@ -12,7 +12,7 @@
 
 ## Changelog
 
-### v1.0.0 (12-01-2024)
+### v1.0.0 (13-01-2024)
 
 ## License
 [GPLv2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
