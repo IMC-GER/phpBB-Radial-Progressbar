@@ -56,8 +56,9 @@ if (typeof imcger != 'object') {
 
 	$(document).ready(function() {
 		phpbb.plupload.uploader.bind('FilesAdded', function(up, files) {
-
-			$('.radial-progress-cover').css('stroke', $('#file-list td').css('background-color'));
+			$.each(files, function(i, file) {
+				$('.radial-progress-cover', '#' + file.id).css('stroke', $('.attach-status', '#' + file.id).css('background-color'));
+			});
 
 			up.bind('UploadProgress', function(up, file) {
 				$('.radial-progress-cover', '#' + file.id).attr('stroke-dashoffset', -(37.699 / 100) * file.percent);
