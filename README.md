@@ -12,6 +12,9 @@
 
 ## Changelog
 
+### v1.0.2 (21-02-2024)
+- Minor code change
+
 ### v1.0.1 (21-01-2024)
 - Conflict with other SVG graphics fixed
 - Revised CSS
