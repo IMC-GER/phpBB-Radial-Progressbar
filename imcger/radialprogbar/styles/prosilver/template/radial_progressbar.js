@@ -4,6 +4,7 @@
  *
  * @copyright (c) 2024, Thorsten Ahlers
  * @license GNU General Public License, version 2 (GPL-2.0)
+ *
  */
 
 /**
@@ -30,10 +31,14 @@ if (typeof imcger != 'object') {
 	 * Returns the brightness of the colour
 	 *
 	 * @param	{string}	rgbColour	Colour in format rgb(r, g, b)
-	 * @returns	{int}					Brightness of colour (0 - 255)
+	 * @returns	{int}					Brightness of colour (0 - 255), Error (400)
 	 */
 	imcger.radialProgBar.getBrightness = function(rgbColour) {
 		let colours = [];
+
+		if (typeof rgbColour != 'string' || !rgbColour.startsWith('rgb')) {
+			return 400;
+		}
 
 		rgbColour = rgbColour.substring(rgbColour.indexOf('(') + 1, rgbColour.indexOf(')'));
 
@@ -44,7 +49,7 @@ if (typeof imcger != 'object') {
 		colours[2] = parseInt(colours[2]);
 
 		// Format Rec. 601 (http://alienryderflex.com/hsp.html)
-		return Math.round(Math.sqrt(0.299 * Math.pow(colours[0], 2) + 0.587 * Math.pow(colours[1], 2) + 0.114 * Math.pow(colours[2], 2)));
+		return Math.round((0.299 * colours[0]**2 + 0.587 * colours[1]**2 + 0.114 * colours[2]**2)**.5);
 	};
 
 	// Set the colour for the file progress spinner, depending on the background

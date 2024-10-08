@@ -1,5 +1,11 @@
-/*	Radial Progressbar
----------------------------------------------- */
+/**
+ * Radial Progressbar
+ * An extension for the phpBB Forum Software package.
+ *
+ * @copyright (c) 2024, Thorsten Ahlers
+ * @license GNU General Public License, version 2 (GPL-2.0)
+ *
+ */
 
 .file-progress {
 	background-color: unset;
@@ -39,6 +45,6 @@
 
 .imcger-radial-progress > svg, .file-status {
 	vertical-align: middle;
-	height: 1.7em;
+	height: 1.7em;	/* This is where you can change the size of the radial progress bar. */
 	width: 1.7em;
 }

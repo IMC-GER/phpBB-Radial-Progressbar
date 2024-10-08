@@ -1,2 +1,13 @@
-{% INCLUDECSS '@imcger_radialprogbar/radial_progressbar.css' %}
-{% INCLUDEJS '@imcger_radialprogbar/radial_progressbar.js' %}
+{#
+ * Radial Progressbar
+ * An extension for the phpBB Forum Software package.
+ *
+ * @copyright (c) 2024, Thorsten Ahlers
+ * @license GNU General Public License, version 2 (GPL-2.0)
+ *
+ #}
+
+{% if S_PLUPLOAD %}
+	{% INCLUDECSS '@imcger_radialprogbar/radial_progressbar.css' %}
+	{% INCLUDEJS '@imcger_radialprogbar/radial_progressbar.js' %}
+{% endif %}
